@@ -1,5 +1,5 @@
 package main
 
-type PasarelaPago interface{ 
+type PasarelaPago interface {
 	Cobrar(monto float64) error
 }

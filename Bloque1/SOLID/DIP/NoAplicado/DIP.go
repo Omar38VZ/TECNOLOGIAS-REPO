@@ -1,41 +1,46 @@
 package main
-import "fmt" 
-type ClienteStripe struct{ 
-	ClaveApi string 
+
+import "fmt"
+
+// Detalle de bajo nivel: cliente concreto de Stripe
+type ClienteStripe struct {
+	ClaveApi string
 }
 
-func(s*ClienteStripe) CobrarTarjeta(monto float64) bool { 
+func (s *ClienteStripe) CobrarTarjeta(monto float64) bool {
 	fmt.Printf("[API STRIPE] Enviando $%.2f con la clave %s\n", monto, s.ClaveApi)
 	return true
 }
 
-type NotificadorSendgrid struct{ 
+// Detalle de bajo nivel: notificador concreto de SendGrid
+type NotificadorSendgrid struct {
 	CorreoRemitente string
 }
 
-func (n *NotificadorSendgrid) EnviarReciboCorreo(monto float64, correo string){
-	fmt.Printf("[API SENDGRID] Enviado desde %s a %s la cantidad de %.2f",n.CorreoRemitente,correo,monto)
+func (n *NotificadorSendgrid) EnviarReciboCorreo(monto float64, correo string) {
+	fmt.Printf("[API SENDGRID] Enviado desde %s a %s la cantidad de $%.2f\n", n.CorreoRemitente, correo, monto)
 }
 
-type ServicioPago struct{ 
+// Módulo de alto nivel que depende directamente de los detalles (viola DIP)
+type ServicioPago struct {
 	clienteStripe *ClienteStripe
-	notificador *NotificadorSendgrid
+	notificador   *NotificadorSendgrid
 }
 
-func NuevoServicioPago() *ServicioPago{ 
+func NuevoServicioPago() *ServicioPago {
 	return &ServicioPago{
-		clienteStripe: &ClienteStripe{ClaveApi: "1"},
-		notificador: &NotificadorSendgrid{CorreoRemitente: "[EMAIL_ADDRESS]"},
+		clienteStripe: &ClienteStripe{ClaveApi: "sk_test_123"},
+		notificador:   &NotificadorSendgrid{CorreoRemitente: "pagos@tienda.com"},
 	}
 }
 
-func(s *ServicioPago) ProcesarPago(monto float64, correo string){
-	if(s.clienteStripe.CobrarTarjeta(monto)){
+func (s *ServicioPago) ProcesarPago(monto float64, correo string) {
+	if s.clienteStripe.CobrarTarjeta(monto) {
 		s.notificador.EnviarReciboCorreo(monto, correo)
 	}
 }
 
-func main(){ 
+func main() {
 	servicio := NuevoServicioPago()
 	servicio.ProcesarPago(1500.01, "changotremendo@gmail.com")
 }

@@ -2,14 +2,16 @@ package main
 
 import "fmt"
 
-type ServicioPago struct{ 
+// Módulo de alto nivel: depende solo de abstracciones (interfaces)
+type ServicioPago struct {
 	pasarela PasarelaPago
-	emisor EmisorComprobante
+	emisor   EmisorComprobante
 }
+
 func NuevoServicioPago(pasarela PasarelaPago, emisor EmisorComprobante) *ServicioPago {
 	return &ServicioPago{
-		pasarela: , pasarela,
-		emisor: emisor, 
+		pasarela: pasarela,
+		emisor:   emisor,
 	}
 }
 
