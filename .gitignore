@@ -1,2 +1,12 @@
 Herencia_Simple-Multiple/Yo(Omar)/
 Herencia_Simple-Multiple/Prueba2DeHERENCIAS/
+Trabajo_IA/
+
+# Archivos generados / de editor
+__pycache__/
+*.pyc
+*.class
+bin/
+obj/
+.LCK*~
+*~
