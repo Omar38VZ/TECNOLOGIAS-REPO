@@ -1,5 +1,3 @@
-package Bloque1.SOLID.Liskov.NoAplicadoEvelyn;
-
 public class CuentaCorriente extends CuentaBancaria {
     private double limiteSobregiro;
     private double tasaInteres;
@@ -24,7 +22,7 @@ public class CuentaCorriente extends CuentaBancaria {
 
     @Override
     public double calcularIntereses() {
-        return saldo * tasaInteres;
+        return saldo > 0 ? saldo * tasaInteres : 0;
     }
 
     @Override

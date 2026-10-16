@@ -1,5 +1,3 @@
-package Bloque1.SOLID.Liskov.NoAplicadoEvelyn;
-
 public class CuentaCredito extends CuentaBancaria {
     private double limiteCredito;
     private double deuda;
@@ -15,10 +13,13 @@ public class CuentaCredito extends CuentaBancaria {
     @Override
     public void retirar(double cantidad) {
         validarCantidad(cantidad);
-        if (deuda + cantidad > limiteCredito) {
+        double usaSaldo = Math.min(saldo, cantidad); // primero se usa el saldo a favor
+        double nuevaDeuda = cantidad - usaSaldo;
+        if (deuda + nuevaDeuda > limiteCredito) {
             throw new IllegalArgumentException("Limite de credito excedido");
         }
-        deuda += cantidad;
+        saldo -= usaSaldo;
+        deuda += nuevaDeuda;
     }
 
     @Override
@@ -28,7 +29,7 @@ public class CuentaCredito extends CuentaBancaria {
 
     @Override
     public double consultarSaldo() {
-        return -deuda;
+        return saldo - deuda;
     }
 
     @Override
@@ -41,7 +42,7 @@ public class CuentaCredito extends CuentaBancaria {
         validarCantidad(cantidad);
         deuda -= cantidad;
         if (deuda < 0) {
-            saldo = -deuda; // pasa a saldo a favor
+            saldo += -deuda; // lo que sobra pasa a saldo a favor
             deuda = 0;
         }
     }

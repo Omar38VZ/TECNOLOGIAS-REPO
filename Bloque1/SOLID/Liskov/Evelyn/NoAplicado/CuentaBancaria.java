@@ -1,6 +1,4 @@
-package Bloque1.SOLID.Liskov.NoAplicadoEvelyn;
-
-public abstract class CuentaBancaria {
+public class CuentaBancaria {
     protected String numeroCuenta;
     protected double saldo;
     
@@ -16,6 +14,9 @@ public abstract class CuentaBancaria {
     
     public void retirar(double cantidad) {
         validarCantidad(cantidad);
+        if (cantidad > saldo) {
+            throw new IllegalArgumentException("Saldo insuficiente");
+        }
         saldo -= cantidad;
     }
     
@@ -27,15 +28,17 @@ public abstract class CuentaBancaria {
         return numeroCuenta;
     }
     
-    public abstract double calcularIntereses();
+    public double calcularIntereses() {
+        return 0;
+    }
     
     public void pagarDeuda(double cantidad) {
         // Método que las subclases que no son de crédito no pueden cumplir lógicamente
     }
     
     protected void validarCantidad(double cantidad) {
-        if (cantidad < 0) {
-            throw new IllegalArgumentException("La cantidad no puede ser menor a 0");
+        if (cantidad <= 0) {
+            throw new IllegalArgumentException("La cantidad debe ser mayor a 0");
         }
     }
 }

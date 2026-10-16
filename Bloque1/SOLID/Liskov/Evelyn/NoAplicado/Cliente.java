@@ -1,5 +1,3 @@
-package Bloque1.SOLID.Liskov.NoAplicadoEvelyn;
-
 public class Cliente {
     private String nombre;
     private String identificacion;

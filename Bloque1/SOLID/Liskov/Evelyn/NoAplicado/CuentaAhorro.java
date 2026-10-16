@@ -1,5 +1,3 @@
-package Bloque1.SOLID.Liskov.NoAplicadoEvelyn;
-
 public class CuentaAhorro extends CuentaBancaria {
     private double tasaInteres;
 

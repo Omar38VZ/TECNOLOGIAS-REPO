@@ -1,5 +1,3 @@
-package Bloque1.SOLID.Liskov.NoAplicadoEvelyn;
-
 public class SistemaBancario {
     public static void main(String[] args) {
         // Ejemplo de uso que evidencia la violación del principio LSP
@@ -25,5 +23,21 @@ public class SistemaBancario {
         System.out.println("Pagando deuda en cuenta de crédito...");
         cliente2.pagarDeuda(500);
         System.out.println("Deuda actual: " + credito.consultarDeuda());
+
+        // El mismo código con cada subclase: solo funciona con CuentaCredito
+        System.out.println("\nPagando $100 de deuda con cada tipo de cuenta...");
+        CuentaBancaria[] cuentas = {
+            new CuentaAhorro("AH-789", 500),
+            new CuentaCorriente("CC-101", 500, 200),
+            new CuentaCredito("CR-202", 1000)
+        };
+        for (CuentaBancaria cuenta : cuentas) {
+            try {
+                cuenta.pagarDeuda(100);
+                System.out.println(cuenta.getNumeroCuenta() + ": pago aplicado");
+            } catch (UnsupportedOperationException e) {
+                System.out.println(cuenta.getNumeroCuenta() + ": FALLA -> " + e.getMessage());
+            }
+        }
     }
 }
