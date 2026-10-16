@@ -1,18 +1,25 @@
-package Bloque1.SOLID.Segregacion_Interfaces.Bugatti.NoAplicado;
-
 public class App {
-    public static void main(String[] args){ 
-        DonRamon Ramon = new donRamon(); 
-        DoñaFlorinda Florinda = new DoñaFlorinda();
-        Nono Ñoño = new Nono(); 
+    public static void main(String[] args) { 
+        AccionesPersonaje[] personajes = { new DonRamon(), new DonaFlorinda(), new Nono() };
 
-        System.out.println("---La vensida del shavo---");
-        
-        Ramon.darGolpe();
+        System.out.println("---La vecindad del Chavo (ISP NO aplicado)---");
+
+        // Cada personaje está obligado a tener las 5 acciones, aunque no le correspondan
+        for (AccionesPersonaje personaje : personajes) {
+            ejecutar(personaje::darGolpe);
+            ejecutar(personaje::pagarRenta);
+            ejecutar(personaje::cobrarRenta);
+            ejecutar(personaje::jugar);
+            ejecutar(personaje::llorar);
+            System.out.println();
+        }
+    }
+
+    private static void ejecutar(Runnable accion) {
         try {
-            Ramon.cobrarRenta();
+            accion.run();
         } catch (UnsupportedOperationException e) {
-            System.out.println(e.getMessage());
+            System.out.println("  [No implementado] " + e.getMessage());
         }
     }
 }

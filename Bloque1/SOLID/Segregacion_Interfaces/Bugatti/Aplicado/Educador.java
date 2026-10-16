@@ -1,5 +1,5 @@
-package Bloque1.SOLID.Segregacion_Interfaces.Bugatti.Aplicado;
-
-public class Educador {
-    
+public interface Educador {
+    void impartirClase();
+    void pasarLista();
+    void hacerCoraje();
 }

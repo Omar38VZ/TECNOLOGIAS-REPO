@@ -1,36 +1,46 @@
 import java.util.List;
 
-import Bloque1.SOLID.Segregacion_Interfaces.Bugatti.NoAplicado.DonRamon;
-public class App{ 
-    public static void main(String[] args) throws Exception{ 
-        Nono ñoño = new Nono(); 
-        DonRamon ramon = new DonRamon(); 
-        PorfesorJirafales jirafales = new ProfesorJirafales();
-        
-        //Interfaz para El profe Jirafales
-        List<EducadorZ educadores = List.of(jirafales); 
-        for (Educador e : educadores){ 
+public class App { 
+    public static void main(String[] args) { 
+        Nono nono = new Nono(); 
+        DonRamon donRamon = new DonRamon(); 
+        DonaFlorinda donaFlorinda = new DonaFlorinda();
+        ProfeJirafales jirafales = new ProfeJirafales();
+
+        System.out.println("---La vecindad del Chavo (ISP aplicado)---");
+
+        // Interfaz para el Profe Jirafales
+        List<Educador> educadores = List.of(jirafales); 
+        for (Educador e : educadores) { 
             e.impartirClase();
             e.pasarLista();
             e.hacerCoraje();
         }
 
-        //Interfaz para Don Ramón
-        List<Inquilino> inquilinos = List.of(donRamon);
-        for (Inquilino i : inquilinos){ 
+        // Interfaz para los que pagan renta
+        List<Inquilino> inquilinos = List.of(donRamon, donaFlorinda);
+        for (Inquilino i : inquilinos) { 
             i.pagarRenta();
         }
-        //Interfaz pars Habitante
-        List<Habitante> habitantes = List.of(donRamon, jirafales); 
-        for (Habitante i : habitantes){ 
-            i.interactuarConElChavo();
+
+        // Interfaz para los que se pelean
+        List<Peleonero> peleoneros = List.of(donRamon, donaFlorinda);
+        for (Peleonero p : peleoneros) { 
+            p.darGolpe();
         }
 
-        //Interfaz para niño
-        List<Nino> niños = List.of(nono); 
-        for (Nino i: niños){
-            i.llorar();
-            i.cantar();
+        // Interfaz para los habitantes
+        List<Habitante> habitantes = List.of(donRamon, donaFlorinda, jirafales); 
+        for (Habitante h : habitantes) { 
+            h.interactuarConElChavo();
+        }
+
+        // Interfaz para los niños
+        List<Nino> ninos = List.of(nono); 
+        for (Nino n : ninos) {
+            n.jugar();
+            n.llorar();
+            n.cantar();
         }
     }
 }

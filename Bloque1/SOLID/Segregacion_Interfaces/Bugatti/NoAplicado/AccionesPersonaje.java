@@ -1,5 +1,5 @@
-package Bloque1.SOLID.Segregacion_Interfaces.Bugatti.NoAplicado;
-public interface AccionesPersonaje{ 
+// Interfaz "gorda": obliga a todos los personajes a implementar acciones que no les corresponden.
+public interface AccionesPersonaje { 
     void darGolpe(); 
     void pagarRenta();
     void cobrarRenta();

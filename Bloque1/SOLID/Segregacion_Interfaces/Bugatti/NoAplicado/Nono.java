@@ -1,29 +1,24 @@
-package Bloque1.SOLID.Segregacion_Interfaces.Bugatti.NoAplicado;
-
-public class Nono implements AccionesPersonaje{
-    private final String nombre = "Nono"; 
+public class Nono implements AccionesPersonaje {
+    private final String nombre = "Ñoño"; 
 
     @Override
     public void darGolpe(){ 
-        System.out.println(nombre + " No pega");
+        throw new UnsupportedOperationException(nombre + ": No pega");
     }
     @Override 
     public void pagarRenta(){ 
-        throw new UnsupportedOperationException(nombre + ": No paga renta!, su jefe es el mero mero"); 
+        throw new UnsupportedOperationException(nombre + ": No paga renta, su papá es el dueño"); 
     }
     @Override
     public void cobrarRenta(){ 
-        throw new UnsupportedOperationException(nombre + ": Aveces cobra por su papá"); 
-
+        throw new UnsupportedOperationException(nombre + ": A veces cobra, pero por su papá"); 
     }
     @Override 
     public void jugar(){ 
-        throw new UnsupportedOperationException(nombre + ": Juega con sus pelotas"); 
+        System.out.println(nombre + ": Juega con sus pelotas"); 
     }
     @Override 
     public void llorar(){ 
-        throw new UnsupportedOperationException(nombre + ": huja i huja i");
+        System.out.println(nombre + ": ¡Buaaa, buaaa!");
     }
-
-    
 }

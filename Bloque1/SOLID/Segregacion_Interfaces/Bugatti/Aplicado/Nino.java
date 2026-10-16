@@ -1,5 +1,5 @@
-package Bloque1.SOLID.Segregacion_Interfaces.Bugatti.Aplicado;
-
-public class Nino {
-    
+public interface Nino {
+    void jugar();
+    void llorar();
+    void cantar();
 }

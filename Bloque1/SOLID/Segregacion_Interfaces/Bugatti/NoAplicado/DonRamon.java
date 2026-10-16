@@ -1,20 +1,17 @@
-package Bloque1.SOLID.Segregacion_Interfaces.Bugatti.NoAplicado;
-
-public class DonRamon implements AccionesPersonaje{
+public class DonRamon implements AccionesPersonaje {
     private final String nombre = "Don Ramón"; 
 
     @Override
     public void darGolpe(){ 
-        System.out.println(nombre + " Toma!, toma!");
+        System.out.println(nombre + ": ¡Toma!, ¡toma!");
     }
     @Override 
     public void pagarRenta(){ 
-        throw new UnsupportedOperationException(nombre + ": Nunca paga renta!"); 
+        throw new UnsupportedOperationException(nombre + ": ¡Nunca paga renta!"); 
     }
     @Override
     public void cobrarRenta(){ 
-        throw new UnsupportedOperationException(nombre + ": No es dueño de la vecindad del xavo"); 
-
+        throw new UnsupportedOperationException(nombre + ": No es dueño de la vecindad del Chavo"); 
     }
     @Override 
     public void jugar(){ 
@@ -24,6 +21,4 @@ public class DonRamon implements AccionesPersonaje{
     public void llorar(){ 
         throw new UnsupportedOperationException(nombre + ": Los hombres no lloran");
     }
-
-    
 }
