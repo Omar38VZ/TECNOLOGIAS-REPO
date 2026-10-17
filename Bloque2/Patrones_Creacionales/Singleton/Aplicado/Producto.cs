@@ -1,8 +1,8 @@
 public class Producto{ 
-    public string Nombre{get; private set;}
-    public string Codigo{get; private set;}
-    public string Precio{get; private set;}
-    public string Cantidad{get; private set;}
+    public string Nombre {get; private set;}
+    public int Codigo {get; private set;}
+    public double Precio {get; private set;}
+    public int Cantidad {get; private set;}
 
     public Producto(string nombre, int codigo, double precio, int cantidad){ 
         Nombre = nombre; 
@@ -10,8 +10,9 @@ public class Producto{
         Precio = precio; 
         Cantidad = cantidad; 
     }
+
     public bool ReducirCantidad(int cantidadVendida){ 
-        if(cantidadVendida || cantidadVendida > Cantidad) return false;
+        if(cantidadVendida <= 0 || cantidadVendida > Cantidad) return false;
         Cantidad -= cantidadVendida; 
         return true; 
     }

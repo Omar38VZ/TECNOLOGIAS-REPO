@@ -1,5 +1,5 @@
-public interface  IAlmacen{
+public interface IAlmacen{
     List<Producto> ObtenerProductos();
-    Producto BuscarProducto(int codigo); 
-    bool AgregarProducto(Producto producto)
+    Producto? BuscarProducto(int codigo); 
+    bool AgregarProducto(Producto producto);
 }

@@ -1,12 +1,12 @@
 public class AlmacenCentral : IAlmacen{ 
-    private List <Producto> _productos;
-    private readonly Lazy<AlmacenCentral> _instancia = 
+    private readonly List<Producto> _productos;
+    private static readonly Lazy<AlmacenCentral> _instancia = 
         new Lazy<AlmacenCentral>(() => new AlmacenCentral()); 
 
     public static AlmacenCentral Instancia => _instancia.Value;
 
     private AlmacenCentral(){
-        System.Console.WriteLine("Creando el almacen")
+        System.Console.WriteLine("Creando el almacen");
         _productos = new List<Producto>();
     }
 
@@ -14,7 +14,7 @@ public class AlmacenCentral : IAlmacen{
         return _productos;
     }
     
-    public Producto BuscarProducto(int codigo){
+    public Producto? BuscarProducto(int codigo){
         return _productos.FirstOrDefault(x => x.Codigo == codigo);
     }
     
@@ -25,5 +25,4 @@ public class AlmacenCentral : IAlmacen{
         }
         return false;
     }
-
 }
