@@ -1,5 +1,3 @@
-package Bloque1.Patrones_De_Diseño.Singleton.Factory.NoAplicado;
-
 public abstract class Enemigo {
     protected String nombre; 
     protected int vida; 
@@ -28,24 +26,11 @@ public abstract class Enemigo {
         return this.nombre; 
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
     public int getVida() {
         return vida;
-    }
-
-    public void setVida(int vida) {
-        this.vida = vida;
     }
 
     public int getAtaque() {
         return ataque;
     }
-
-    public void setAtaque(int ataque) {
-        this.ataque = ataque;
-    }
-    
 }
