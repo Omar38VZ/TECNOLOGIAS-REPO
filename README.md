@@ -21,6 +21,10 @@ Bloque2/
     ├── Singleton/                         C#
     ├── Factory_Method/                    Java
     └── Prototype/                         Java
+
+Bloque3/
+└── Patrones_Estructurales/
+    └── Decorator/                         Omar (Python)
 ```
 
 ## Temario
